@@ -13,12 +13,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
-  const [query, setQuery] = useState ({q: 'Niagara Falls'})
+  const [query, setQuery] = useState ({q: 'Niagara Falls'});
+  
   const [units, setUnits] = useState ('metric')
   const [weather, setWeather] = useState(null)
 
   useEffect(() => {
-    const fetchWeather = async ( )=> {
+    const fetchWeather = async ()=> {
       const message = query.q ? query.q : "current location."
 
       toast.info('Fetching weather for ' + message);
@@ -29,6 +30,7 @@ function App() {
           toast.success(`Successfully fetched weather for ${data.name}, ${data.country}.`);
 
           setWeather(data);
+          console.log(data);
         });
      
 };
