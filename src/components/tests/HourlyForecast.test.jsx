@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import HourlyForecast from "../components/HourlyForecast";
-import getFormattedWeatherData from "../components/services/weatherService";
+import { HourlyForecast } from "../HourlyForecast"
+import getFormattedWeatherData from "../services/weatherService";
 
 describe(HourlyForecast, () => {
     let weather = new Array(48)
@@ -10,15 +10,13 @@ describe(HourlyForecast, () => {
     })
 
     it("Initializes to the first page of weather data.", () => {
-        render(<HourlyForecast title = "Hourly" items = {weather}/>);
-        const pageElement = screen.getByTestId("page")
-        //expect(pageElement).not.toEqual(null)
+        render(<HourlyForecast title="Hourly" items={weather} />);
         const pageNumber = Number(screen.getByTestId("page").getAttribute('value'))
         expect(pageNumber).toEqual(1)
     })
 
     it("Increments and does not pass the seventh page", () => {
-        render(<HourlyForecast title = "Hourly" items = {weather} />)
+        render(<HourlyForecast title="Hourly" items={weather} />)
         var pageNumber = Number(screen.getByTestId("page").getAttribute('value'))
         const incrementPage = screen.getByRole("button", { name: '››' })
 
@@ -47,9 +45,9 @@ describe(HourlyForecast, () => {
         }
         expect(pageNumber).toEqual(1)
     })
-    
+
     it("Resets page number on weather data change", () => {
-        render(<HourlyForecast title = "Hourly" items = {weather} />)
+        render(<HourlyForecast title="Hourly" items={weather} />)
         var pageNumber = Number(screen.getByTestId("page").getAttribute('value'))
         const incrementPage = screen.getByRole("button", { name: "››" })
 
