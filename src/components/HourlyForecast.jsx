@@ -31,7 +31,7 @@ function HourlyForecast({ title, items }) {
                 <div className="mt-6">
                     <p className="font-medium uppercase"> {title}</p>
                 </div>
-                <div className='mt-6'>
+                <div className='mt-6' value={page} data-testid="page">
                     <button className="text-white font-medium uppercase pr-1" onClick={previousPage}> &#8249;&#8249; </button>
                     {page} / 7
                     <button className="text-white font-medium uppercase pl-1" onClick={nextPage}> &#8250;&#8250; </button>
